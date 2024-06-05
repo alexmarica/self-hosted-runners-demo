@@ -11,15 +11,14 @@ ARG RUNNER_LABELS="test1,test2"
 ENV REPO=$REPO
 ENV PAT=$PAT
 ENV RUNNER_LABELS=$RUNNER_LABELS
-#install packages
+# install additional packages and add non-root user that the runner will use 
 RUN apt update && apt upgrade && \
     apt -y install curl jq git && \
-    rm -rf /var/lib/apt/lists/*
-# add new (non-root) user and run the remainder tasks on its behalf. 
-RUN useradd -ms /bin/bash $USER && \
+    rm -rf /var/lib/apt/lists/* && \
+    useradd -ms /bin/bash $USER && \
     mkdir -p WORKDIR/actions-runner
 WORKDIR $WORKDIR
-# install runner, copy startup script that configures and starts runner
+# install runner, copy startup script that configures and registers it
 COPY start.sh actions-runner/start.sh
 RUN cd $WORKDIR/actions-runner && \
     curl -o actions-runner-linux-x64-$RUNNER_VERSION.tar.gz -L https://github.com/actions/runner/releases/download/v$RUNNER_VERSION/actions-runner-linux-x64-2.316.1.tar.gz && \
@@ -30,4 +29,4 @@ RUN cd $WORKDIR/actions-runner && \
     rm -f ./actions-runner-linux-x64-$RUNNER_VERSION.tar.gz && \
     chown -R $USER:$USER $WORKDIR/actions-runner
 USER $USER
-CMD ["./actions-runner/start.sh"]
+ENTRYPOINT ["./actions-runner/start.sh"]
