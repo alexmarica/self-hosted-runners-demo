@@ -28,5 +28,7 @@ jobs:
       run: echo "${{ github.event.inputs.greeting }}, ${{ github.event.inputs.name }}!"
     - name: Let us dir and pwd
       run: |
-        ls
         pwd
+        ls -al
+        uname -a
+        id
