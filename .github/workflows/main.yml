@@ -30,8 +30,12 @@ jobs:
     steps:
     - name: Let us dir and pwd
       run: |
-        pwd
-        ls -al
-        uname -a
-        id
-        kubectl version --client ; helm version --short ; docker version --format 'Client: {{.Client.Version}} - Server: {{.Server.Version}}'
+        pwd > output.txt
+        uname -a >> output.txt
+        id >> output.txt
+        kubectl version --client ; helm version --short ; docker version --format 'Client: {{.Client.Version}} - Server: {{.Server.Version}}' >> output.txt
+    - name: publish artefact
+      uses: actions/upload-artifact@v3
+      with:
+        name: command-output
+        path: output.txt
