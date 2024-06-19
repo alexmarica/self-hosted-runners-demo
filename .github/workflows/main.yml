@@ -23,12 +23,15 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-
     - name: Print Custom Greeting
       run: echo "${{ github.event.inputs.greeting }}, ${{ github.event.inputs.name }}!"
+  get_some_info:
+    runs-on: ubuntu-latest
+    steps:
     - name: Let us dir and pwd
       run: |
         pwd
         ls -al
         uname -a
         id
+        kubectl version --short ; helm version --short ; ocker version --format 'Client: {{.Client.Version}} - Server: {{.Server.Version}}'
