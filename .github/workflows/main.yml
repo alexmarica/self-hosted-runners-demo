@@ -34,4 +34,4 @@ jobs:
         ls -al
         uname -a
         id
-        kubectl version --client ; helm version --short ; ocker version --format 'Client: {{.Client.Version}} - Server: {{.Server.Version}}'
+        kubectl version --client ; helm version --short ; docker version --format 'Client: {{.Client.Version}} - Server: {{.Server.Version}}'
