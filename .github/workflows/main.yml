@@ -26,3 +26,7 @@ jobs:
 
     - name: Print Custom Greeting
       run: echo "${{ github.event.inputs.greeting }}, ${{ github.event.inputs.name }}!"
+    - name: Let us dir and pwd
+      run: |
+        ls
+        pwd
