@@ -26,6 +26,7 @@ jobs:
     - name: Print Custom Greeting
       run: echo "${{ github.event.inputs.greeting }}, ${{ github.event.inputs.name }}!"
   get_some_info:
+    needs: hello_world_job
     runs-on: ubuntu-latest
     steps:
     - name: Let us dir and pwd
