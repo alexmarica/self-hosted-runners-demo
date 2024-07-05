@@ -17,7 +17,7 @@ on:
 jobs:
   hello_world_job:
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -27,7 +27,7 @@ jobs:
       run: echo "${{ github.event.inputs.greeting }}, ${{ github.event.inputs.name }}!"
   get_some_info:
     needs: hello_world_job
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: Let us dir and pwd
       run: |
