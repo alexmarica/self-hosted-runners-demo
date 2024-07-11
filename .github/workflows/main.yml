@@ -1,4 +1,4 @@
-name: Manual Hello World with Variables
+name: Test pipeline w/ PR creation and push
 
 # Controls when the workflow will run
 
@@ -6,6 +6,10 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches:
+      - main
+
 env:
   name: 'Alex'
   greeting: 'Yello'
