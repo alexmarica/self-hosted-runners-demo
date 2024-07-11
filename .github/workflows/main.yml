@@ -23,7 +23,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Print Custom Greeting
-      run: echo "${{ env.greeting }}, ${{ env.name }}"!" >> output.txt
+      run: echo "${{ env.greeting }}, ${{ env.name }}!" >> output.txt
   get_some_info:
     needs: hello_world_job
     runs-on: self-hosted
