@@ -5,10 +5,10 @@ name: Test pipeline w/ PR creation and push
 on:
   pull_request:
     branches:
-      - main
+      - master
   push:
     branches:
-      - main
+      - master
 
 env:
   name: 'Alex'
