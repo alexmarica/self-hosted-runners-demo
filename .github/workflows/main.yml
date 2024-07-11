@@ -12,7 +12,7 @@ on:
 
 env:
   name: 'Alex'
-  greeting: 'Yello'
+  greeting: 'Noroc'
 jobs:
   hello_world_job:
     # The type of runner that the job will run on
