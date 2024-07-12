@@ -1,0 +1,16 @@
+name: "Called secondary workflow"
+on:
+  workflow_call:
+    inputs:
+      name:
+        required: true
+        type: string
+      greeting:
+        required: true
+        type: string
+jobs:
+  print_stuff:
+    runs-on: self-hosted
+    steps:
+      - name: actually_print_stuff
+        run: echo "${{ inputs.greeting }}, ${{ inputs.name }}!"

@@ -1,4 +1,4 @@
-name: Test pipeline w/ PR creation and push
+name: Test pipeline w/ PR creation and push. bonus, calling reusable template
 
 # Controls when the workflow will run
 
@@ -23,18 +23,25 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Print Custom Greeting
-      run: echo "${{ env.greeting }}, ${{ env.name }}!" >> output.txt
+      run: echo "${{ env.greeting }}, ${{ env.name }}!" | tee -a output.txt
   get_some_info:
     needs: hello_world_job
     runs-on: self-hosted
     steps:
     - name: Let us dir and pwd
       run: |
-        pwd > output.txt
-        uname -a >> output.txt
-        id >> output.txt
+        pwd | tee -a output.txt
+        uname -a | tee -a output.txt
+        id | tee -a output.txt
     - name: publish artefact
       uses: actions/upload-artifact@v3
       with:
         name: command-output
         path: output.txt
+#  here we call a template (aka reusable workflows
+  secondary_template_job:
+    uses: ./secondary.yaml
+    with:
+      name: Alex
+      greeting: Hello
+
