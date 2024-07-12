@@ -40,7 +40,7 @@ jobs:
         path: output.txt
 #  here we call a template (aka reusable workflows
   secondary_template_job:
-    uses: ./secondary.yaml
+    uses: ./.github/workflows/secondary.yaml
     with:
       name: Alex
       greeting: Hello
