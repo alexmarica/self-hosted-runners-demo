@@ -26,7 +26,8 @@ jobs:
       run: echo "${{ env.greeting }}, ${{ env.name }}!" >> output.txt
   get_some_info:
     needs: hello_world_job
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
+    if: github.event.inputs.approve == 'true'
     steps:
     - name: Let us dir and pwd
       run: |
@@ -38,4 +39,3 @@ jobs:
       with:
         name: command-output
         path: output.txt
-        approvers: alexmarica
