@@ -38,3 +38,4 @@ jobs:
       with:
         name: command-output
         path: output.txt
+        approvers: alexmarica
