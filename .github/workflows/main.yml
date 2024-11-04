@@ -26,7 +26,7 @@ jobs:
       run: echo "${{ env.greeting }}, ${{ env.name }}!" >> output.txt
   get_some_info:
     needs: hello_world_job
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     - name: Let us dir and pwd
       run: |
